@@ -1,12 +1,4 @@
-> **⚠️ This project has been archived and is looking for a maintainer ⚠️**
-
 # Save Actions Plugin
-
-[![JetBrains Plugin](./docs/badge-jetbrains-website.svg)](https://plugins.jetbrains.com/plugin/7642-save-actions)
-[![JetBrains Supported](./docs/badge-jetbrains-supported.svg)](https://www.jetbrains.com/?from=intellij-save-actions-plugin)
-[![Travis CI Build Status](https://travis-ci.org/dubreuia/intellij-plugin-save-actions.svg?branch=main)](https://travis-ci.org/dubreuia/intellij-plugin-save-actions)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/dubreuia/intellij-plugin-save-actions?branch=main&svg=true)](https://ci.appveyor.com/project/dubreuia/intellij-plugin-save-actions)
-[![Codecov Code Coverage](https://codecov.io/gh/dubreuia/intellij-plugin-save-actions/branch/main/graph/badge.svg)](https://codecov.io/gh/dubreuia/intellij-plugin-save-actions)
 
 Supports configurable, Eclipse like, save actions, including "optimize imports", "reformat code", "rearrange code", "compile file" and some quick fixes like "add / remove 'this' qualifier", etc. The plugin executes the configured actions when the file is synchronised (or saved) on disk.
 
@@ -175,90 +167,10 @@ If a quick fix adds something that is removed by another quick fix, the removal 
 | Remove blocks from if/while/for statements                               | The statement `if (true) { return false; }` becomes `if (true) return false;`, also working for `for` and `while` statements
 | Change visibility of field or method to lower access                     | The field `public int field = 0` becomes `private int field = 0` if it is not used outside class, also working for methods
 
-## Compatibility
-
-Built for SDK version 2016.3, 2018.3, 2019.3, using JDK 8, those are the currently supported products, and is not expected to work in other products:
-
-- <img src="./docs/icon-intellij-idea.svg" width="30"> Intellij IDEA (ultimate and community)
-- <img src="./docs/icon-pycharm.svg" width="30"> PyCharm (professional and community)
-- <img src="./docs/icon-phpstorm.svg" width="30"> PHPStorm
-- <img src="./docs/icon-android-studio.svg" width="30"> AndroidStudio
-- <img src="./docs/icon-webstorm.svg" width="30"> WebStorm
-- <img src="./docs/icon-rubymine.svg" width="30"> RubyMine
-- <img src="./docs/icon-clion.svg" width="30"> CLion
-
-See issue [#18](https://github.com/dubreuia/intellij-plugin-save-actions/issues/18) for a beta packaging that you can try in other products.
-
-### Backward compatibility
-
-- For SDK 2016.3, the latest version is [Release 1.6.0+2016.3](https://github.com/dubreuia/intellij-plugin-save-actions/releases/tag/v1.6.0%2B2016.3) (not maintained anymore).
-- For SDK 2018.3, 2019.3 and EAP (not released on plugin repository) the latest version is in the [releases](https://github.com/dubreuia/intellij-plugin-save-actions/releases).
-
-### Eclipse configuration support
-
-The save-actions plugin supports Eclipse configuration `.epf` files by the [Workspace Mechanic](https://marketplace.eclipse.org/content/workspace-mechanic) Eclipse plugin (Java IDE only). You can specify a path to an Eclipse configuration file in the "Eclipse support" settings section to import it. The plugin will load the content of the file in the plugin configuration, and disable the plugin configuration options (the checkbox will be grayed out). Use the "reset" button to remove the import.
-
-The plugin will stay in sync with your Eclipse configuration file. Not every features are present on either side, but the ones that are in common are supported.
-
-You can find an example of [an Eclipse configuration `.epf` file](src/test/resources/com/dubreuia/model) in the test resources.
-
-```properties
-# @title Save Actions
-# @description Save Actions
-# @task_type LASTMOD
-file_export_version=3.0
-/instance/org.eclipse.jdt.ui/editor_save_participant_org.eclipse.jdt.ui.postsavelistener.cleanup=true
-/instance/org.eclipse.jdt.ui/sp_cleanup.format_source_code=true
-/instance/org.eclipse.jdt.ui/sp_cleanup.format_source_code_changes_only=false
-/instance/org.eclipse.jdt.ui/sp_cleanup.organize_imports=true
-/instance/org.eclipse.jdt.ui/sp_cleanup.remove_trailing_whitespaces=true
-...
-```
-
-### Other plugin compatibility
-
-Some things to note when using other plugins with the Save Actions plugin:
-
-- [IdeaVim](https://plugins.jetbrains.com/plugin/164-ideavim): Since the Save Actions plugin do not trigger on the "Save Document" action (see [usage](#usage)), using `:w` to save in IdeaVim won't trigger the plugin, but using `:wa` will, since it calls the "Save All" action. See issue [#222](https://github.com/dubreuia/intellij-plugin-save-actions/issues/222)).
-- [detekt](https://plugins.jetbrains.com/plugin/10761-detekt): Using the detekt plugin breaks the Save Actions plugin, see issue [#270](https://github.com/dubreuia/intellij-plugin-save-actions/issues/270).
-
-## Files location
-
-- **idea.log**: The log file the save actions plugin writes in. It contains debug information, prefixed with `com.dubreuia.SaveActionManager`. If you are using default locations, it would be in `~/.IntelliJIdeaVERSION/system/log/idea.log`.
-- **saveactions_settings.xml**: The settings file is saved by project in the `.idea` folder. That file can be committed in git thus shared in your development team. If you are using the default locations, it would be in `~/IdeaProjects/PROJECT_NAME/.idea/saveactions_settings.xml`
-
-## Contributions
-
-### Project management
-
-There are 2 boards to track the issues (bug or features):
-
-- **[Agile Board - Save Actions - Ideas](https://github.com/dubreuia/intellij-plugin-save-actions/projects/2)** - Tracks your and our ideas for new features and the discussions around them. All the issues here are "closed"
-- **[Agile Board - Save Actions - Boards](https://github.com/dubreuia/intellij-plugin-save-actions/projects/3)** - Tracks the issues that are urgent enough and specified enough to be implemented. All the issues here are "open" except those that got implemented and will be release in next version, those are "closed" (and stay closed if they work once released).
-
-When you submit an issue, it will be triaged into either board.
-
-### Contributors
-
-Big thanks to all the contributors submitting issues, testing, and especially submitting pull requests. See [contributors graph](https://github.com/dubreuia/intellij-plugin-save-actions/graphs/contributors) :hearts:
-
-### Contributing
-
-See [CONTRIBUTING](CONTRIBUTING.md).
-
-### Releasing
-
-See [RELEASING](RELEASING.md).
-
-## Links
 
 ### JetBrains plugin page
 
 The plugin is in the [JetBrains plugin repository](https://plugins.jetbrains.com/plugin/7642-save-actions), please take the time to [rate it](https://plugins.jetbrains.com/plugin/7642-save-actions)! 
-
-### Issues
-
-The plugin does not work? You want more features? You can [ask me on twitter](https://twitter.com/dubreuia) or [create an issue on github](https://github.com/dubreuia/intellij-plugin-save-actions/issues).
 
 ## Licence
 
