@@ -170,7 +170,7 @@ If a quick fix adds something that is removed by another quick fix, the removal 
 
 ### JetBrains plugin page
 
-The plugin is in the [JetBrains plugin repository](https://plugins.jetbrains.com/plugin/7642-save-actions), please take the time to [rate it](https://plugins.jetbrains.com/plugin/7642-save-actions)! 
+The plugin is in the [JetBrains plugin repository](https://plugins.jetbrains.com/plugin/21538-save-actions-tool), please take the time to [rate it](https://plugins.jetbrains.com/plugin/21538-save-actions-tool)! 
 
 ## Licence
 
